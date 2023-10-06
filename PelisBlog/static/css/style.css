@@ -1,0 +1,55 @@
+body{
+    background-image: url('/static/img/cine.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logo{
+    height: 50px;
+    width: px;
+}
+
+li{
+    display: inline-block;
+}
+
+.texto-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinea el contenido en la parte inferior */
+    align-items: center; /* Centra horizontalmente el contenido */
+    height: 80vh; /* Esto asegura que el contenedor ocupe toda la altura de la ventana */
+    background-image: url('ruta/de/imagen.jpg'); /* Cambia esto por la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.texto-logo{
+    color: white;
+    font-family: 'Libre Franklin', sans-serif;
+    text-decoration: none;
+}
+
+.texto_principal {
+    font-size: 80px;
+    color: white; /* Color del texto */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-bottom: 20px; /* Espacio entre el texto y el botón */
+    font-family: 'Libre Franklin', sans-serif;
+}
+.btn{
+    text-align: center;
+
+}
+
+.boton {
+    background-color: rgb(255, 230, 0);
+    color: black; /* Color del texto del botón */
+    padding: 10px 20px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
