@@ -8,17 +8,26 @@
     {% block title %}<title>PelisBlog</title>{% endblock title %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,600;1,700&display=swap" rel="stylesheet"> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     {% block nav %}
     <nav>
         <ul class="nav">
             <li><img class="logo" src="{% static 'img/camara2.png' %}" alt="Logo"></li>
+            {% if user.is_authenticated and user.is_staff %}
+            <li>
+                <a href="{% url 'logout' %}">Cerrar sesion</a>
+            </li>
+            {% endif %}
             <li><strong></strong><a href="#" class="texto-logo">PELIS <br> BLOG</a></strong></li>
         </ul>
     </nav>
