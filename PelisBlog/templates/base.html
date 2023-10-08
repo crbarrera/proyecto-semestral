@@ -19,19 +19,38 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+    <div class="container-fluid">
     {% block nav %}
-    <nav>
-        <ul class="nav">
-            <li><img class="logo" src="{% static 'img/camara2.png' %}" alt="Logo"></li>
-            {% if user.is_authenticated and user.is_staff %}
-            <li>
-                <a href="{% url 'logout' %}">Cerrar sesion</a>
-            </li>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul  class="navbar-nav">
+            <li class="nav-item"><img class="logo" src="{% static 'img/camara2.png' %}" alt="Logo"></li>
+            <li class="nav-item"><strong></strong><a  href="{% url 'inicio' %}" class="navbar-brand">PELIS <br> BLOG</a></strong></li> 
+
+            {% if not user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"> <h5 style="color: White;"> Iniciar Sesión </h5></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'peliculas' %}"><h5 style="color: White;">Peliculas</h5></a></li>
             {% endif %}
-            <li><strong></strong><a href="#" class="texto-logo">PELIS <br> BLOG</a></strong></li>
+
+            {% if user.is_authenticated and user.is_staff %}
+
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'peliculas' %}"><h5 style="color: White;">Peliculas</h5></a></li>
+            <li class="nav-item"> <a class="nav-link" href="{% url 'compras' %}"><h5 style="color: White;">Compras</h5></a> </li>
+            <li class="nav-item"> <a class="nav-link"href="{% url 'logout' %}"><h5 style="color: White;">Cerrar sesión</h5></a> </li>
+            {% if not user.is_staff %}
+            <li class="nav-item"><h5 class="nav-link" style="color: White;">Hola Cliente</h5></li>
+            {% endif %}
+            {% if user.is_staff %}
+            <li class="nav-item"><h5 class="nav-link" style="color: White;">Hola Administrador</h5></li>
+            {% endif %}
+            
+            {% endif %}
         </ul>
     </nav>
     {% endblock nav %}
+    </div>
     {% block content %}
     {% endblock content %}
 </body>

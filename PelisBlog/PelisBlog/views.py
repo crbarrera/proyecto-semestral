@@ -32,3 +32,6 @@ def logout_succes(request):
     logout(request)
     # Redirige al usuario a la página de inicio de sesión o a cualquier otra página que desees.
     return redirect('inicio')
+
+def compras(request):
+    return render(request, "compras.html")

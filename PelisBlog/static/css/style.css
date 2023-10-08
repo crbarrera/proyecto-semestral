@@ -11,6 +11,7 @@ body{
 
 li{
     display: inline-block;
+    color: White 
 }
 
 .texto-btn {
@@ -25,7 +26,7 @@ li{
     background-position: center center;
 }
 
-.texto-logo{
+.navbar-brand {
     color: white;
     font-family: 'Libre Franklin', sans-serif;
     text-decoration: none;
@@ -53,3 +54,4 @@ li{
     cursor: pointer;
     text-decoration: none;
 }
+
