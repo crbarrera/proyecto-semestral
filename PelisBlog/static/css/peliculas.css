@@ -1,0 +1,66 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.ultimos-estrenos{
+    color: black !important;
+    font-weight: bolder;
+    padding: 12px;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.navbar-brand {
+    color: white;
+    font-family: 'Libre Franklin', sans-serif;
+    text-decoration: none;
+}
+
+.img1{
+    height: 250px;
+    width: 150px;
+}
+
+.peliculas{
+    text-decoration: none;
+    font-style: none;
+}
+
+.nombre-peli{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 80px auto; /* Añadido un margen superior para dar espacio al navbar fijo */
+    padding: 0 20px;
+    flex-grow: 1;
+}
+
+.peliculas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pelicula{
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px 0;
+    text-align: center;
+    flex-basis: calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+.pelicula img{
+    max-width: 100%;
+    height: auto;
+}

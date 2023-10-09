@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/peliculas.css' %}">{% endblock css %}
+{% block content %}
+<h1 class="ultimos-estrenos">Ultimos Estrenos</h1>
+{% for pelicula in peliculas %}
+<div class="container">
+    <div class="peliculas">
+        <div class="pelicula">
+
+                <a href="{% url 'ficha_pelicula' pelicula.id %}"><img src="{{ pelicula.foto.url }}" alt="{{ pelicula.nombre }}">
+                <h1 class="nombre-peli">{{ pelicula.nombre }}</h1></a>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

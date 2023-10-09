@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="peliculas">
+        <div class="pelicula">
+                <img src="{{ pelicula.foto.url }}" alt="{{ pelicula.nombre }}">
+                <h1 class="nombre-peli">{{ pelicula.nombre }}</h1>
+                <h2>{{ pelicula.precio }}</h2>
+        </div>
+    </div>
+</div>
+{% endblock content %}
