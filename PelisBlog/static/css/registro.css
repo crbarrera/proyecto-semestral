@@ -1,0 +1,28 @@
+.formulario {
+    text-align: center;
+    max-width: 300px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+  }
+  
+  .campo {
+    text-align: left;
+    margin-bottom: 10px; /* Espacio entre campos */
+  }
+  
+  label {
+    display: block; /* Coloca cada etiqueta en una nueva línea */
+    margin-bottom: 5px; /* Espacio entre etiqueta e input */
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%; /* Ocupa el ancho disponible */
+    padding: 5px; /* Espacio interno */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 4px; /* Esquinas redondeadas */
+  }
+  
+  button {
+    margin-top: 10px; /* Espacio entre los campos y el botón */
+  }
+  

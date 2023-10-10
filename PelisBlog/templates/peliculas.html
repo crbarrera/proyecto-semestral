@@ -7,10 +7,8 @@
 <div class="container">
     <div class="peliculas">
         <div class="pelicula">
-
-                <a href="{% url 'ficha_pelicula' pelicula.id %}"><img src="{{ pelicula.foto.url }}" alt="{{ pelicula.nombre }}">
-                <h1 class="nombre-peli">{{ pelicula.nombre }}</h1></a>
-
+            <a href="{% url 'ficha_pelicula' pelicula.id %}"><img src="{{ pelicula.foto.url }}" alt="{{ pelicula.nombre }}">
+            <h1 class="nombre-peli">{{ pelicula.nombre }}</h1></a>
         </div>
     </div>
 </div>

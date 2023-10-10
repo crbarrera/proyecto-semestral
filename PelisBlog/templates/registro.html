@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/registro.css' %}">{% endblock css %}
+{% block content %}
+  <h2 style="text-align: center;">Registro</h2>
+  <form method="post" class="formulario">
+    {% csrf_token %}
+    <div class="campo">
+      <label for="id_usuarname">Usuario:</label>
+      <input name="username" type="text" autofocus required id="id_usuarname" class="form-control">
+    </div>
+    <div class="campo">
+      <label for="id_first_name">Nombre: </label>
+      <input name="first_name" type="text" id="id_first_name" class="form-control">
+  </div>
+  <div class="campo">
+    <label for="id_last_name" class="letra-piola" >apellidos: </label>
+    <input name="last_name" type="text" id="id_last_name" class="form-control">
+  </div>
+    <div class="campo">
+      <label for="id_password1" class="letra-piola" >Contraseña: </label>
+      <input name="password1" type="password" autocomplete="new-password" required id="id_password1" class="form-control">
+  </div>
+    <div class="campo">
+      <label for="id_password2" class="letra-piola" >Repetir Contraseña: </label>
+      <input name="password2" type="password" autocomplete="new-password" required id="id_password2" class="form-control">
+  </div>
+    <div class="campo">
+      <label for="id_direccion" class="letra-piola" >Dirección: </label>
+      <input name="direccion" type="text" required id="id_direccion" class="form-control">
+  </div>
+    <div class="campo">
+      <label for="id_telefono">Teléfono:</label>
+      <input name="telefono" type="number" required id="id_telefono" class="form-control">
+    </div>
+    <div class="campo">
+      <label for="id_comuna">Comuna:</label>
+      <input name="comuna" type="text" required id="id_comuna" class="form-control">
+    </div>
+    <div class="campo">
+      <label for="id_region">Región:</label>
+      <input name="region" type="text" required id="id_region" class="form-control">
+    </div>
+    <button type="submit">Registrarse</button>
+  </form>
+{% endblock %}

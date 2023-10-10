@@ -1,5 +1,45 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/compra_exitosa.css' %}">{% endblock css %}
 {% block content %}
-<h1 style="color: White !important; font-weight: bolder; padding: 12px;">Compras</h1>
+<div class="container">
+    <h1 class="compra_exitosa">Compras</h1>
+    {% for persona in persona %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Pelicula</th>
+                <th>Precio</th>
+                <th>Dirección</th>
+                <th>Region</th>
+                <th>Comuna</th>
+                <th>Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="fecha">Fecha1</td>
+                <td id="nombre">Nombre1</td>
+                <td id="precio">Precio1</td>
+                <td>{{ persona.direccion}}</td>
+                <td>{{ persona.region}}</td>
+                <td>{{ persona.comuna}}</td>
+                <td>{{ persona.user.first_name }} {{ persona.user.last_name }}</td>
+            </tr>
+            <tr>
+                <td id="fecha">Fecha2</td>
+                <td id="nombre">Nombre2</td>
+                <td id="precio">Precio2</td>
+                <td>{{ persona.direccion}}</td>
+                <td>{{ persona.region}}</td>
+                <td>{{ persona.comuna}}</td>
+                <td>{{ persona.user.first_name }} {{ persona.user.last_name }}</td>
+            </tr>
+            <!-- Agrega más filas según sea necesario -->
+        </tbody>
+    </table>
+    {% endfor %}
+</div>
 {% endblock content %}
+{% block js %} <script src="{% static 'js/recuperar_datos.js' %}"></script>{% endblock js %}

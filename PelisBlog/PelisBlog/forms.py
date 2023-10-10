@@ -9,3 +9,13 @@ class LoginForm(Form):
     password = forms.CharField(widget=forms.PasswordInput(), label="Contraseña")
     class Meta:
         fields = ['username', 'password']
+        
+class RegistroForm(UserCreationForm):
+    direccion = forms.CharField(label="Dirección")
+    telefono = forms.IntegerField()
+    comuna = forms.CharField(label="Comuna")
+    region = forms.CharField(label="Región")
+    
+    class Meta:
+        model = User
+        fields = ['username','first_name', 'last_name', 'direccion', 'telefono', 'comuna', 'region']

@@ -1,0 +1,16 @@
+.container{
+    flex-direction: column;
+}
+
+.compra_exitosa{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 45px;
+    padding-top: 10px;
+    color: black;
+    margin: 0; /* Elimina el margen superior para evitar espacio adicional */
+    text-align: center;
+}
+
+.datos-compra{
+    text-align: center;
+}

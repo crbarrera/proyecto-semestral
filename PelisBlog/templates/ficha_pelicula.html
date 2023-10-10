@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/ficha_peli.css' %}">{% endblock css %}
 {% block content %}
 <div class="container">
     <div class="peliculas">
         <div class="pelicula">
-                <img src="{{ pelicula.foto.url }}" alt="{{ pelicula.nombre }}">
+                <img class="img1" src="{{ pelicula.foto.url }}" alt="{{ pelicula.nombre }}">
+            <div class="info-peli">
+                <p>{% now "DATETIME_FORMAT" %}</p>
+                <p class="id-peli">{{ pelicula.id }}</p>
                 <h1 class="nombre-peli">{{ pelicula.nombre }}</h1>
-                <h2>{{ pelicula.precio }}</h2>
+                <h5 class="precio">${{ pelicula.precio }}</h5>
+                <a id="btn-comprar" class="btn-comprar" data-id="{{ pelicula.id }}" href="{% url 'compra_exitosa' %}">Comprar</a>
+            </div>
         </div>
     </div>
 </div>
+{% block js %} <script src="{% static 'js/btn_comprar.js' %}"></script> {% endblock js %}
 {% endblock content %}

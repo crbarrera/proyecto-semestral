@@ -1,0 +1,52 @@
+/* Modifica los estilos para mostrar el nombre y el precio al lado de la imagen */
+.pelicula {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px 0;
+    display: flex; /* Utiliza flexbox para alinear elementos en línea */
+    align-items: center; /* Centra verticalmente los elementos en el contenedor */
+    text-align: center;
+    flex-basis: calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+.pelicula img {
+    max-width: 350px; /* Limita el ancho de la imagen para evitar que sea demasiado grande */
+    height: auto;
+    margin-right: 10px; /* Añade un margen derecho para separar la imagen del texto */
+}
+
+.nombre-peli {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 45px;
+    padding-top: 10px;
+    color: black;
+    margin: 0; /* Elimina el margen superior para evitar espacio adicional */
+}
+
+.precio {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 30px;
+    padding-top: 10px;
+    padding-right: 220px;
+    color: black;
+    margin: 0; /* Elimina el margen superior para evitar espacio adicional */
+    padding-bottom: 10px;
+}
+
+.info-peli{
+    flex-direction: column;
+}
+
+.btn-comprar{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    margin: 0;
+    height: 20px;
+    width: 10px;
+}
+
+

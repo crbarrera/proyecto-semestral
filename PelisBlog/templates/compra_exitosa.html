@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/compra_exitosa.css' %}">{% endblock css %}
+{% block content %}
+<div class="container">
+    <h1 class="compra_exitosa">Compra Exitosa</h1>
+    <div class="datos-compra">
+        <p>Fecha: <span id="fecha"></span></p>
+        <p>Nombre: <span id="nombre"></span></p>
+        <p>Precio: <span id="precio"></span></p>
+    </div>
+</div>
+{% endblock content %}
+{% block js %} <script src="{% static 'js/recuperar_datos.js' %}"></script>{% endblock js %}

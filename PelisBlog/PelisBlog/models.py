@@ -13,3 +13,12 @@ class Producto(models.Model):
     def __str__(self):
         return f'{self.idprod} - {self.nomprod}'
     
+class PerfilUsuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    direccion = models.CharField(max_length=100, null=False, blank=False, verbose_name='direccion')
+    comuna = models.CharField(max_length=100, null=False, blank=False, verbose_name='comuna')
+    telefono = models.IntegerField()
+    region = models.CharField(max_length=100, null=False, blank=False, verbose_name='region')
+    
+    def __str__(self) -> str:
+        return self.direccion

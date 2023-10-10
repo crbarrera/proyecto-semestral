@@ -26,5 +26,6 @@ urlpatterns = [
     path('login', views.login_succes, name="login"),
     path('logout/', views.logout_succes, name='logout'),
     path('compras/', views.compras, name='compras'),
-    path('peliculas/', include('Peliculas.urls'))
+    path('peliculas/', include('Peliculas.urls')),
+    path('registro', views.registro, name="registro"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
