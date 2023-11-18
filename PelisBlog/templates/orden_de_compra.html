@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/ficha_peli.css' %}">{% endblock css %}
+{% block content %}
+<div class="fondo"> 
+    <center><h2 class="titulo">Mi orden de compra</h2></center>
+    <div class="producto-singular">
+        <!-- Productos aquí -->
+        {% for fa in factura %}
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Usuario y Dirección de envio
+                    </th>
+                    <th>
+                        Codigo de orden
+                    </th>
+                    <th>
+                        Datos del Producto
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Monto Total
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    {% if fa.estado_factura == 'Facturado' %}
+                    <th>
+                        Estado Envio
+                    </th>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_staff %}
+                    <th>
+                        Opcion
+                    </th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div>
+                            <span class="negrita">Usuario:</span> {{ fa.usuario.user }}
+                        </div>
+                        <div>
+                            <span class="negrita">Dirección a enviar:</span>
+                            {{ fa.usuario.direccion }}, {{ fa.usuario.comuna }} {{ fa.usuario.region }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ fa.codigo_factura }}
+                    </td>
+                    <td>
+                        <div>
+                            <span class="negrita">Nombre: </span> {{ fa.nombre_producto }}
+                        </div>
+                        <div>
+                            <span class="negrita">Precio: </span>{{ fa.precio_producto }}
+                        </div>
+                        <div>
+                            <span class="negrita">Cantidad: </span>{{ fa.monto_producto }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ fa.fecha_factura }}
+                    </td>
+                    <td>
+                        <div>
+                            <span class="negrita">Neto: </span>{{ monto_neto }}
+                        </div>
+                        <div>
+                            <span class="negrita">IVA(19%): </span>{{ monto_iva }}
+                        </div>
+                        <div class="resaltado">
+                            <span class="negrita">Total: </span> {{ monto_total }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ fa.estado_factura }}
+                    </td>
+                    {% if fa.estado_factura == 'Facturado' %}
+                    <td>
+                        Enviado
+                    </td>
+                    
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_staff %}
+                    <td>
+                        <button>
+                            Editar
+                        </button>
+                    </td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+    {% if estado_factura == "Pendiente" %}
+    <div class="footer-factura">
+        Esta orden de compra se encuentra actualmente por validación, lo puedes verificar en tu perfil cuantas veces quieras 😊
+    </div>
+    <div class="footer-factura2">
+        Cuando tu orden de compra cambie de estado a "Aceptado", podras observar la siguiente fase, que es el estado de envio de tu producto.
+    </div>
+    {% elif estado_factura == "Facturado" %}
+    <div class="footer-factura">
+        ¡Exelente, Tu orden de compra se Aprobo! 
+    </div>
+    <div class="footer-factura2">
+        Tu orden de compra sera despachado por nuestros Agentes, te llamaremos cuando estemos cerca la dirección de envio que indicaste al momento de registarte.
+    </div>
+    {% else %}
+    <div class="footer-factura">
+        ¡Lo sentimos, tu orden de compra fue rechazada por nuestros Agentes!
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    th,  td{
+        border: 3px solid black;
+        width: 200px;
+        text-align: center;
+    }
+    th{
+        height: 100px;
+        font-size: 20px;
+    }
+    td{
+        height: 300px;
+        font-size: 25px;
+    }
+    .producto-singular{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .resaltado{
+        background-color: yellow;
+    }
+.titulo{
+    margin-bottom: 20px;
+    margin-top: 180px;
+    font-size: 70px;
+}
+.footer-factura{
+    margin-top: 50px;
+    text-align: center;
+}
+.footer-factura2{
+    text-align: center;
+}
+tbody tr td:first-child{
+    width: 300px;
+}
+tbody tr td:nth-child(3){
+    width: 300px;
+}
+.negrita{
+    font-weight: bold;
+}
+.fondo{
+    background-color: #ffff;
+}
+</style>
+
+{% endblock %}

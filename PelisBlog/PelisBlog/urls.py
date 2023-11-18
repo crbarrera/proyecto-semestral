@@ -28,4 +28,7 @@ urlpatterns = [
     path('compras/', views.compras, name='compras'),
     path('peliculas/', include('Peliculas.urls')),
     path('registro', views.registro, name="registro"),
+    path('orden_de_compra/<id>', views.orden_de_compra, name="orden_de_compra"),
+    path('ordenes_de_compras/', views.ordenes_de_compras, name="ordenes_de_compras"),
+    path('peril_usario', views.perfil, name='perfil')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

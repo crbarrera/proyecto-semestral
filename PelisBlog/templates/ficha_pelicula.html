@@ -11,10 +11,15 @@
                 <p class="id-peli">{{ pelicula.id }}</p>
                 <h1 class="nombre-peli">{{ pelicula.nombre }}</h1>
                 <h5 class="precio">${{ pelicula.precio }}</h5>
-                <a id="btn-comprar" class="btn-comprar" data-id="{{ pelicula.id }}" href="{% url 'compra_exitosa' %}">Comprar</a>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <label for="Cantidad">Cantidad: 
+                        <input type="number" name="cantidad" id="cantidad">
+                    </label>
+                    <button>Comprar</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-{% block js %} <script src="{% static 'js/btn_comprar.js' %}"></script> {% endblock js %}
 {% endblock content %}
