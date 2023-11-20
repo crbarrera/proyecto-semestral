@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/ficha_peli.css' %}">{% endblock css %}
+{% block content %}
+    <center><h2 class="titulo">Ordenes de Compra</h2></center>
+    <div class="producto-singular">
+        <!-- Productos aquí -->
+        {% for fa in factura %}
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Usuario
+                    </th>
+                    <th>
+                        Codigo
+                    </th>
+                    <th>
+                        Datos Producto
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <!-- <th>
+                        Monto Total
+                    </th> -->
+                    <th>
+                        Estado
+                    </th>
+                    {% if user.is_authenticated and user.is_staff %}
+                    <th>
+                        Opcion
+                    </th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ fa.usuario.user }}
+                    </td>
+                    <td>
+                        {{ fa.codigo_factura }}
+                    </td>
+                    <td>
+                        <div>
+                            Nombre: {{ fa.nombre_producto }}
+                        </div>
+                        <div>
+                            Precio: {{ fa.precio_producto }}
+                        </div>
+                        <div>
+                            Cantidad: {{ fa.monto_producto }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ fa.fecha_factura }}
+                    </td>
+                    <!-- <td>
+                        <div>
+                            Neto: {{ fa.monto_neto }}
+                        </div>
+                        <div>
+                            IVA(19%): {{ monto_iva }}
+                        </div>
+                        <div class="resaltado">
+                            Total: {{ monto_total }}
+                        </div>
+                    </td> -->
+                    <td>
+                        {{ fa.estado_factura }}
+                    </td>
+                    <td>
+                        <button class="editar-btn" data-toggle="modal" data-target="#editarModal" data-id="{{ fa.codigo_factura }}">
+                            Editar {{ fa.codigo_factura }}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+    {% if estado_factura == "Pendiente" %}
+    <div class="footer-factura">
+        Esta orden de compra se encuentra actualmente por validación, lo puedes verificar en tu perfil cuantas veces quieras 😊
+    </div>
+    {% else %}
+    <div class="footer-factura">
+        ¡Exelente, Tu orden se Aprobo!
+    </div>
+    {% endif %}
+</div>
+<div class="modal fade centrado" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarModalLabel">Editar Estado de orden</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ojo">
+                    ¡OJO!, los estados de ordenes solo deben contar con 3 estados : "Facturado", "Pendiente", "Rechazado"
+                </div>
+                <form class="form-mensaje" id="editarForm" method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token  %}
+                    <label for="estado">Estado:
+                        <input type="text" name="estado" id="estado">
+                    </label>
+                    <input type="hidden" name="factura_id" id="facturaIdInput" value="">
+                    <input type="submit" class="btn btn-primary btnwidth" id="id_guardar" value="Guardar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    th,  td{
+        border: 3px solid black;
+        width: 200px;
+        text-align: center;
+    }
+    th{
+        height: 100px;
+        font-size: 20px;
+    }
+    td{
+        height: 300px;
+        font-size: 25px;
+    }
+    .producto-singular{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+    .resaltado{
+        background-color: yellow;
+    }
+.titulo{
+    margin-bottom: 20px;
+    margin-top: 180px;
+    font-size: 70px;
+}
+.footer-factura{
+    margin-top: 50px;
+    text-align: center;
+}
+tbody tr td:nth-child(3){
+    width: 300px;
+}
+.centrado{
+    margin-top: 300px;
+}
+.ojo{
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+</style>
+
+    <!-- Bootstrap JS con Popper.js y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.editar-btn').on('click', function () {
+                var facturaId = $(this).data('id');
+                // Mostrar el ID en la consola    
+                // Abrir el modal
+                $('#editarModal').modal('show');
+    
+                // Cambiar el valor del campo oculto después de que el modal se haya mostrado
+                $('#editarModal').on('shown.bs.modal', function () {
+                    $('#facturaIdInput').val(facturaId);
+                });
+            });
+        });
+    </script>
+
+{% endblock %}
+
+

@@ -13,6 +13,7 @@ def __str__(self):
 
 class PerfilUsuario(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    rut = models.CharField(max_length=40, default="Sin Rut", null=True, blank=True)
     direccion = models.CharField(max_length=100, null=False, blank=False, verbose_name='direccion')
     comuna = models.CharField(max_length=100, null=False, blank=False, verbose_name='comuna')
     telefono = models.IntegerField()
@@ -20,3 +21,13 @@ class PerfilUsuario(models.Model):
     
     def __str__(self) -> str:
         return f"{self.user.username}"
+
+class Factura(models.Model):
+    codigo_factura = models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(PerfilUsuario, on_delete=models.CASCADE)
+    nombre_producto = models.CharField(max_length=90, null=True)
+    monto_producto = models.IntegerField(default=1, blank=True, null=True)
+    precio_producto = models.IntegerField()
+    fecha_factura = models.DateTimeField(auto_now=True)
+    estado_factura = models.CharField(max_length=40 ,default="Pendiente", null=True, blank=True)
+    

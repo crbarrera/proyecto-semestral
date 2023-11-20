@@ -11,6 +11,7 @@ class LoginForm(Form):
         fields = ['username', 'password']
         
 class RegistroForm(UserCreationForm):
+    rut = forms.CharField(label="Rut")
     direccion = forms.CharField(label="Dirección")
     telefono = forms.IntegerField()
     comuna = forms.CharField(label="Comuna")
@@ -18,4 +19,4 @@ class RegistroForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['username','first_name', 'last_name', 'direccion', 'telefono', 'comuna', 'region']
+        fields = ['username','first_name', 'last_name', 'rut', 'direccion', 'telefono', 'comuna', 'region']

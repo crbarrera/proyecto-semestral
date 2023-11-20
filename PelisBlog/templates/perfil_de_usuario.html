@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/ficha_peli.css' %}">{% endblock css %}
+{% block content %}
+    <center><h2 class="titulo">Mi Perfil</h2></center>
+
+    <section class="perfil-contenedor">
+        <div class="perfil-valor">
+            <div class="perfil-titulo">
+                Nombre:
+            </div>
+            <div class="perfil-titulo">
+                Apellidos:
+            </div>
+            <div class="perfil-titulo">
+                Rut:
+            </div>
+            <div class="perfil-titulo">
+                Dirección:
+            </div>
+
+        </div>
+        <div class="perfil-dato">
+            <div class="perfil-contenido">
+                {{ request.user.first_name }} 
+            </div>
+            <div class="perfil-contenido">
+                {{ request.user.last_name }}
+            </div>
+            <div class="perfil-contenido">
+                {{ perfil.rut }}
+            </div>
+            <div class="perfil-contenido">
+                {{ perfil.direccion }}
+            </div>
+        </div>
+    </section>
+
+    <section class="table"> 
+        <h2>
+            Mis Facturas
+        </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        ID Factura
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Ver Completo
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fa in facturas %}
+                <tr>
+                    <td>
+                        {{ fa.codigo_factura }}
+                    </td>
+                    <td>
+                        {{ fa.fecha_factura }}
+                    </td>
+                    <td>
+                        <a href="{% url 'orden_de_compra' fa.codigo_factura  %}">
+                            <input type="button" name="" value="Ver" id="">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+<style>
+    .table{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 30px;
+        flex-wrap: nowrap;
+    }
+    th,  td, tr{
+    border: 3px solid black;
+    width: 250px;
+    text-align: center;
+    }
+    th{
+        height: 40px;
+        font-size: 20px;
+    }
+    td{
+        height: 80px;
+        font-size: 25px;
+    }
+.perfil-contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.perfil-valor{
+    width: 300px;
+}
+.perfil-titulo{
+    font-size: 30px;
+    text-align: center;
+}
+
+.perfil-dato{
+    width: 300px;
+    height: auto;
+}
+.perfil-contenido{
+    font-size: 30px;
+    text-align: center;
+}
+.titulo{
+    margin-top: 180px;
+    font-size: 70px;
+}
+</style>
+
+{% endblock %}
