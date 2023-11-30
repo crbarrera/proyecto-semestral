@@ -4,6 +4,10 @@ body{
     background-repeat: no-repeat;
 }
 
+#sesion {
+    text-align: end;
+}
+
 .logo{
     height: 50px;
     width: px;
