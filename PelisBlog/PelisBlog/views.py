@@ -126,26 +126,6 @@ def exportar_reporte_completo(request):
 
     return response
 
-# def exportar_reporte_fecha(request):
-#     filtro = request.POST.get('filtro')
-#     fecha_a_convertir = datetime.strptime(filtro, '%Y-%m-%d')
-#     fecha_formateada = fecha_a_convertir.strftime('%Y-%m-%d')
-
-#     template_path = 'registro_completo.html'
-
-#     context = {
-#         'facturas': Factura.objects.all().filter(fecha_factura = fecha_formateada)
-#     }
-
-#     response = HttpResponse(content_type='application/informe.pdf')
-#     response['Content-Disposition'] = 'attachment; filename="reporte.pdf"'
-
-#     template = get_template(template_path)
-#     html = template.render(context)
-
-#     HTML(string=html, base_url=request.build_absolute_uri('/')).write_pdf(response)
-
-#     return response
 
 def exportar_reporte_fecha(request):
     filtro = request.POST.get('filtro')

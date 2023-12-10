@@ -45,8 +45,8 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}"><h5 style="color: White;">{{ request.user }}</h5></a></li>
             {% else %}
             <li class="nav-item"><h5 class="nav-link" style="color: White;">Hola Administrador</h5></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'ordenes_de_compras' %}"><h5 style="color: White;">{{ request.user }}</h5></a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'reportes' %}"><h5 style="color: White;">{{ request.user }}</h5></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'ordenes_de_compras' %}"><h5 style="color: White;">Ordenes</h5></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'reportes' %}"><h5 style="color: White;">Reportes</h5></a></li>
             {% endif %}
             
             {% endif %}
