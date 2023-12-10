@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,6 +46,7 @@
             {% else %}
             <li class="nav-item"><h5 class="nav-link" style="color: White;">Hola Administrador</h5></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'ordenes_de_compras' %}"><h5 style="color: White;">{{ request.user }}</h5></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'reportes' %}"><h5 style="color: White;">{{ request.user }}</h5></a></li>
             {% endif %}
             
             {% endif %}

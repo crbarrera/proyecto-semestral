@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('nombre_producto', models.CharField(max_length=90, null=True)),
                 ('monto_producto', models.IntegerField(blank=True, default=1, null=True)),
                 ('precio_producto', models.IntegerField()),
-                ('fecha_factura', models.DateTimeField(auto_now=True)),
+                ('fecha_factura', models.DateField(auto_now=True)),
                 ('estado_factura', models.CharField(blank=True, default='Pendiente', max_length=40, null=True)),
                 ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Peliculas.perfilusuario')),
             ],

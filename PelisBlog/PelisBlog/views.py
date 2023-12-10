@@ -1,11 +1,16 @@
 
+from datetime import date, datetime, timezone
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
+from weasyprint import HTML
 from .forms import LoginForm, RegistroForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import RegistroForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from Peliculas.models import PerfilUsuario, Factura
+from django.template.loader import get_template
 
 def index(request):
     return render(request, "index.html")
@@ -97,3 +102,72 @@ def perfil(request):
     perfil = PerfilUsuario.objects.get(user=usuario)
     facturas = Factura.objects.filter(usuario=perfil)
     return render(request, 'perfil_de_usuario.html', {'perfil':perfil, 'facturas': facturas})
+
+def reportes(request):
+    data = {
+        'facturas': Factura.objects.all()
+    }
+    return render(request, 'reporte.html', data)
+
+def exportar_reporte_completo(request):
+
+    template_path = 'registro_completo.html'
+    context = {
+        'facturas': Factura.objects.all()
+    }
+
+    response = HttpResponse(content_type='application/informe.pdf')
+    response['Content-Disposition'] = 'attachment; filename="reporte.pdf"'
+
+    template = get_template(template_path)
+    html = template.render(context)
+
+    HTML(string=html, base_url=request.build_absolute_uri('/')).write_pdf(response)
+
+    return response
+
+# def exportar_reporte_fecha(request):
+#     filtro = request.POST.get('filtro')
+#     fecha_a_convertir = datetime.strptime(filtro, '%Y-%m-%d')
+#     fecha_formateada = fecha_a_convertir.strftime('%Y-%m-%d')
+
+#     template_path = 'registro_completo.html'
+
+#     context = {
+#         'facturas': Factura.objects.all().filter(fecha_factura = fecha_formateada)
+#     }
+
+#     response = HttpResponse(content_type='application/informe.pdf')
+#     response['Content-Disposition'] = 'attachment; filename="reporte.pdf"'
+
+#     template = get_template(template_path)
+#     html = template.render(context)
+
+#     HTML(string=html, base_url=request.build_absolute_uri('/')).write_pdf(response)
+
+#     return response
+
+def exportar_reporte_fecha(request):
+    filtro = request.POST.get('filtro')
+    # Agrega el componente del día ('-01') a la cadena de fecha
+    fecha_a_convertir = datetime.strptime(filtro + '-01', '%Y-%m-%d')
+    fecha_formateada = fecha_a_convertir.strftime('%Y-%m-%d')
+
+    template_path = 'registro_completo.html'
+
+    context = {
+        'facturas': Factura.objects.filter(
+            fecha_factura__year=fecha_a_convertir.year,
+            fecha_factura__month=fecha_a_convertir.month
+        )
+    }
+
+    response = HttpResponse(content_type='application/informe.pdf')
+    response['Content-Disposition'] = 'attachment; filename="reporte.pdf"'
+
+    template = get_template(template_path)
+    html = template.render(context)
+
+    HTML(string=html, base_url=request.build_absolute_uri('/')).write_pdf(response)
+
+    return

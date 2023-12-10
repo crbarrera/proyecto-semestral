@@ -30,5 +30,10 @@ urlpatterns = [
     path('registro', views.registro, name="registro"),
     path('orden_de_compra/<id>', views.orden_de_compra, name="orden_de_compra"),
     path('ordenes_de_compras/', views.ordenes_de_compras, name="ordenes_de_compras"),
-    path('peril_usario', views.perfil, name='perfil')
+    path('peril_usario', views.perfil, name='perfil'),
+    
+    path('reportes/', views.reportes, name="reportes"),
+    path('exportar/exportar_reporte_completo/', views.exportar_reporte_completo, name="exportar_reporte_completo"),
+    path('exportar/exportar_reporte_fecha/', views.exportar_reporte_fecha, name="exportar_reporte_fecha"),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

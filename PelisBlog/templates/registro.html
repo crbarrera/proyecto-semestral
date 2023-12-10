@@ -2,7 +2,7 @@
 {% load static %}
 {% block css %}<link rel="stylesheet" href="{% static 'css/registro.css' %}">{% endblock css %}
 {% block content %}
-  <h2 class="titulo" style="text-align: center;">Registro</h2>
+  <h2 style="text-align: center;">Registro</h2>
   <form method="post" class="formulario">
     {% csrf_token %}
     <div class="campo">
