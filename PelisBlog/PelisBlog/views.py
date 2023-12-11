@@ -150,4 +150,4 @@ def exportar_reporte_fecha(request):
 
     HTML(string=html, base_url=request.build_absolute_uri('/')).write_pdf(response)
 
-    return
+    return response
