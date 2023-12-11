@@ -22,7 +22,7 @@
 2. Entra al directorio del proyecto: `cd pelisBlog`
 3. Instala las dependencias: `npm install` (o `yarn install`)
 4. Instala las librerias del proyecto: `pip install -r requirements.txt`
-5. Instalar un package para generar los reporetes sin erores: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases/download/2022-01-04/gtk3-runtime-3.24.31-2022-01-04-ts-win64.exe
+5. Instalar un package para generar los reportes sin erores: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases/download/2022-01-04/gtk3-runtime-3.24.31-2022-01-04-ts-win64.exe
 
 ## Uso
 
